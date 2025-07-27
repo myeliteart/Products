@@ -579,7 +579,7 @@ export const useMusicStore = defineStore('music', () => {
       title: 'Avira DEretz Yisroel',
       artist: 'Ahrele Samet',
       img: new URL('@/assets/img/ahrela/avira_samet.webp', import.meta.url).href,
-      price: 16,
+      price: 17,
       quantity: 0,
       subtotal: 0,
       audio: '',
