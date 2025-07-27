@@ -173,7 +173,7 @@ export const useMusicStore = defineStore('music', () => {
       id: 12,
       title: 'A Frishe Tantz',
       artist: 'Avrum Shmiel Wieder',
-      img: new URL('@/assets/img/wieder/good.webp', import.meta.url).href,
+      img: new URL('@/assets/img/wieder/Good_400x400.webp', import.meta.url).href,
       price: 16,
       quantity: 0,
       subtotal: 0,
