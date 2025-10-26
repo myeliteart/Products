@@ -4,7 +4,13 @@
     <h2>About us</h2>
     <div class="col-lg-6 about">
       <p class="py-1">
-        Welcome to vue by eli, your destination for discovering and collecting your favorite music albums. Were passionate about bringing together music lovers and timeless collections, offering an easy and enjoyable browsing experience. Our goal is to make finding, comparing, and purchasing albums simple — with clean design, fast navigation, and smart features built using modern web technologies.
+        Welcome to vue by eli.
+      </p>
+      <p>
+        Your destination for discovering and collecting your favorite music albums. 
+      </p>
+      <p>
+        Were passionate about bringing together music lovers and timeless collections, offering an easy and enjoyable browsing experience. Our goal is to make finding, comparing, and purchasing music albums simple — with clean design, fast navigation, and smart features built using modern web technologies.
       </p>
     </div>
     <div class="col-lg-6">
