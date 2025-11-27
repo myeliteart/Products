@@ -6,15 +6,10 @@
   <div class="mx-auto px-6 md:px-24">
         <div class="sm:px-0 px-2">
           <p class="text-center py-5" v-if="!slicedProducts.length">Your products page is currently empty</p>
-          <div class="flex justify-between items-center py-5">
+          <div class="flex justify-between items-center gap-4 py-5">
             <h1 class="text-2xl lg:text-4xl font-medium" v-if="slicedProducts.length">Featured Products</h1>
-
             <div class="ml-auto flex" v-if="slicedProducts.length">
-              <!-- <div>
-                <font-awesome-icon :icon="['fas', 'list']" class="mr-3 crsr" title="List View" :class="view == 'list' ? 'text-orange-400' : ''" @click="view = 'list'" />
-                <font-awesome-icon :icon="['fas', 'grip-vertical']" class="crsr" title="Grid View" :class="view == 'grid' ? 'text-orange-400' : ''" @click="view = 'grid'" />
-              </div> -->
-              <p @click="router.push({name: 'products'})" class="crsr ml-5 underL">View all products</p>
+              <p @click="router.push({name: 'products'})" class="crsr underL">View all products</p>
             </div>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-6">
