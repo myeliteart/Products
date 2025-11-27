@@ -64,6 +64,7 @@
         </div>
 
          <teleport to="body">
+          <div class="hidden sm:block">
               <base-modal v-if="cartModal" mode="dialogCart">
                 <div class="flex justify-between items-center text-end px-4 py-2">
                   <h3 class="text-2xl font-medium">Your cart <span class="text-sm">{{ CartCount }}</span></h3>
@@ -101,6 +102,7 @@
                  <base-button class="w-full cursor-pointer" @click="router.push('/checkout')">Checkout</base-button>
               </div>
             </base-modal>
+            </div>
         </teleport> 
     </div>
 
@@ -108,7 +110,7 @@
         <base-modal mode="dialog2" v-if="bigImage">
           <div class="p-0 relative" v-for="img in currentAlbumItem.images.slice(0, 1)">
               <span class="absolute right-2 top-2 s p-2 crsr" @click="bigImage = false"><font-awesome-icon :icon="['fas', 'xmark']"></font-awesome-icon></span>
-              <img :src="img" class="rounded size-100 md:size-160 py-4" :alt-="currentAlbumItem.title">
+              <img :src="img" class="rounded size-80 md:size-160 py-4" :alt-="currentAlbumItem.title">
               <div class="absoluteDown text-white w-full bg-gray-700">{{ currentAlbumItem.title }}</div>
           </div>
         </base-modal>

@@ -62,6 +62,7 @@
         </teleport>
 
    <teleport to="body">
+       <div class="hidden sm:block">
           <base-modal v-if="cartModal" mode="dialogCart">
             <div class="flex justify-between items-center text-end px-4 py-2">
               <h3 class="text-2xl font-medium">Your cart <span class="text-sm">{{ CartCount }}</span></h3>
@@ -99,6 +100,7 @@
               <base-button class="w-full cursor-pointer" @click="router.push('/checkout')">Checkout</base-button>
           </div>
         </base-modal>
+        </div>
     </teleport> 
 
    <div class="position">
