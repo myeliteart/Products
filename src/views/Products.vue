@@ -1,6 +1,6 @@
 <template>
     <div class="mx-auto px-6 md:px-24 py-8">
-        <div class="gap-10 flex flex-col md:flex-row">
+        <div class="gap-10 flex flex-col-reverse md:flex-row">
          <div class="flex-1">
             <div class="flex justify-between items-center mb-3">
               <div>
@@ -24,7 +24,7 @@
                     <input type="number" class="mr-2 border border-gray-500 outline-0 px-2 py-1 rounded w-full md:w-fit mt-1" v-model="maxPrice">   
                   </div>
               </div>
-              
+
             <div class="my-5">
               <h5 class="pb-1 cart font-bold">Catagory</h5>
               <div v-for="cat in albumTitle">
