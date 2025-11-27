@@ -112,7 +112,7 @@ nav {
     }
     .absoluteTop{
       position: fixed;
-      background-color: #333537;
+      background-color: #131313;
       padding: 6px 8px;
       bottom: 15px;
       right: 15px;

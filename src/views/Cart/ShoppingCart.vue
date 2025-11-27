@@ -1,17 +1,22 @@
 <template>
-   <div class="text-center my-5" v-if="!cart.length">
-      <p>Your Shopping Cart is currently empty</p>
-      <base-button mode="reverse" @click="router.push('/music')">Continue Shopping</base-button>
-  </div>
-  <div class="container py-5" v-if="cart.length">
+   <div class="mx-auto px-6 md:px-24">
+   <div class="text-center my-18" v-if="!cart.length">
+      <p>Your cart is currently empty</p>
+      <base-button class="mt-4 crsr" mode="reverse" @click="router.push('/products')">Start shopping</base-button>
+   </div>
+
+  <div class="pt-5 pb-1" v-if="cart.length">
     <div class="inline">
-      <div class="d-flex align-items-center crsr mb-3" @click="router.back">
+      <div class="flex items-center crsr mb-3" @click="router.back">
           <font-awesome-icon :icon="['fas', 'arrow-left']" class="me-sm-2 me-0 px-sm-0 px-1"/>
       </div>  
     </div>
-    
-    <div class="row table-responsive-md px-2">
-        <table>
+
+    <div class="pb-4">
+      <p class="text-2xl lg:text-4xl font-medium">Your cart</p>
+    </div>
+    <div class="flex flex-col md:flex-row gap-8 mb-8">
+        <table class="mx-auto flex-3 h-fit">
            <tbody>
             <tr>
               <th></th>
@@ -23,29 +28,33 @@
             </tr>
           
             <tr v-for="(c, index) in cart">
-              <td class="text-center" @click="deleteItem(c, index)"><font-awesome-icon :icon="['fas', 'xmark']" class="trash"></font-awesome-icon></td>
+              <td class="text-center" @click="deleteItem(c, index)"><font-awesome-icon :icon="['fas', 'xmark']" class="text-gray-500"></font-awesome-icon></td>
               <td @click="backToDetails(c)">
-                <img :src="c.img" class="img-fluid small rounded crsr">
+                <img :src="c.thumbnail" class="size-14 mx-auto rounded crsr">
               </td>
               <td class="crsr underL" @click="backToDetails(c)">{{ c.title }}</td>
-              <td>${{ c.price }}.00</td>
+              <td>${{ c.price }}</td>
               <td class="quantity">
-                <button @click="decrease(c)">-</button>
-                <input type="number" class="mx-1" v-model="c.quantity" @input="validateQuantity(c)">
-                <button @click="increase(c)">+</button>
+                <button @click="decrease(c)" class="crsr">-</button>
+                <input type="number" class="mx-1 md:mx-2" v-model="c.quantity" @input="validateQuantity(c)">
+                <button @click="increase(c)" class="crsr">+</button>
               </td>
-              <td>${{ c.subtotal = c.price * c.quantity }}.00</td>
+              <td>${{ Math.ceil(c.subtotal = c.price * c.quantity) }}</td>
             </tr>
           </tbody>
         </table>
-        
-      </div>
-      <div class="d-flex justify-content-between pt-3">
-        <p>Total: &nbsp; <span class="orng1">${{ total }}.00</span></p>
-        <base-button mode="reverse" @click="router.push('/checkout')">Continue to Checkout</base-button>
+        <div class="flex-1 bg-gray-200 p-8 h-fit">
+            <div class="flex justify-between text-2xl font-medium">
+              <p>Subtotal</p>
+              <p>${{ Math.ceil(total) }}</p>
+            </div>
+            <p class="my-6">Shipping calculated at checkout.</p>
+            <base-button mode="reverse" @click="router.push('/products')" class="crsr w-full">Continue shopping</base-button>
+            <base-button @click="router.push('/checkout')" class="crsr w-full mt-3">Checkout</base-button>
+          </div>
+        </div>
       </div>
     </div>
-
     <div class="position">
       <font-awesome-icon :icon="['fas', 'angle-up']" class="absoluteTop crsr rounded" v-if="top" @click="backToTop" />
     </div>
@@ -79,7 +88,7 @@
     }
 
     const backToDetails = (item) => {
-      router.push({name: 'musicDetails', params: {id: item.title.toLowerCase().split(' ').join('-')} })
+      router.push({name: 'ProductDetails', params: {id: item.title.toLowerCase().split(' ').join('-')} })
     }
     
     const total = ref(cart.value.reduce((acc, item) => {
@@ -127,17 +136,18 @@
 
 <style scoped>
     table, td, th {
-    border: 1px solid #333537;
+    border: 1px solid #939394;
     border-collapse: collapse;
-    padding: 7px 13px;
+    padding: 7px 9px;
+    text-align: center;
    }
 
     .crsr {
       cursor: pointer;
     }
-    .orng {
+    /* .orng {
       color: #F89829;
-    }
+    } */
     .orng1 {
       color: #333537;
       font-weight: bold;
@@ -147,7 +157,7 @@
     }
     .absoluteTop{
       position: fixed;
-      background-color: #333537;
+       background-color: #131313;
       padding: 6px 8px;
       bottom: 15px;
       right: 15px;
@@ -158,15 +168,12 @@
       color: #333537;
       cursor: pointer;
     }
-    .small {
-      width: 50px;
-    }
 
     .quantity input {
       width: 50px;
       padding: 10px 15px 6px 15px;
       background-color: transparent;
-      border: 1px solid #333537;
+      border: 1px solid #68696b;
       border-radius: .2rem;
       color: #333537;
       text-align: center;
@@ -174,7 +181,7 @@
     .quantity button {
       padding: 5px 15px;
       background-color: transparent;
-      border: 1px solid #333537;
+      border: 1px solid #68696b;
       color: #333537;
       border-radius: .2rem;
       font-size: 20px;
@@ -195,12 +202,12 @@
      .underL:hover {
       text-decoration: underline;
     }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 60rem) {
       .quantity input {
       width: 30px;
       padding: 0;
       background-color: transparent;
-      border: 0px solid #333537;
+      border: 0px solid #68696b;
       border-radius: .2rem;
       color: #333537;
       text-align: center;

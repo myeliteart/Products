@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+
 import App from './App.vue'
 import router from './router'
 
@@ -30,9 +31,10 @@ import BaseModal from './components/Layouts/BaseModal.vue'
 
 import AdditionalInfo from '@/components/Tabs/AdditionalInfo.vue';
 import Reviews from '@/components/Tabs/Reviews.vue';
+import Stock from './components/Tabs/Stock.vue'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 
 app.use(createPinia())
@@ -42,4 +44,5 @@ app.component('base-button', BaseButton)
 app.component('base-modal', BaseModal)
 app.component('additional-info', AdditionalInfo)
 app.component('reviews', Reviews)
+app.component('stock', Stock)
 app.component('font-awesome-icon', FontAwesomeIcon).mount('#app')

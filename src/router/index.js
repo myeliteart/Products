@@ -20,19 +20,19 @@ const router = createRouter({
       component: () => import('../views/About.vue'),
     },
     {
-      path: '/music',
-      name: 'music',
-      component: () => import('../views/Music.vue'),
+      path: '/products',
+      name: 'products',
+      component: () => import('../views/Products.vue'),
     },
     {
-      path: '/music/:id',
-      name: 'musicDetails',
-      component: () => import('../views/MusicDetails.vue'),
+      path: '/products/:id',
+      name: 'ProductDetails',
+      component: () => import('../views/ProductDetails.vue'),
     },
     {
-      path: '/artist/:aid',
-      name: 'Artist',
-      component: () => import('../views/Artists.vue'),
+      path: '/category/:aid',
+      name: 'Category',
+      component: () => import('../views/Category.vue'),
     },
     {
       path: '/favorites',
@@ -66,12 +66,12 @@ const router = createRouter({
       name: 'AddReview',
       component: () => import('../views/Cart/AddReview.vue'),
     },
-    {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: () => import('../views/Dashboard/Dashboard.vue'),
-      meta: { requiresAuth: true }
-    },
+    // {
+    //   path: '/dashboard',
+    //   name: 'Dashboard',
+    //   component: () => import('../views/Dashboard/Dashboard.vue'),
+    //   meta: { requiresAuth: true }
+    // },
     {
       path: '/not-found',
       name: 'notFound',

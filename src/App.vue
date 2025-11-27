@@ -1,10 +1,7 @@
 <template>
-    <div class="container-fluid px-0">
-        <the-nav></the-nav>
-    </div>
-        <div class="">
-          <router-view :key="$route.fullPath"/>
-          <!-- <the-footer></the-footer> -->
+     <div class="mx-auto">
+        <the-nav></the-nav>       
+        <router-view :key="$route.fullPath"/>
         </div>
       <the-footer></the-footer> 
 </template>
@@ -20,6 +17,10 @@ body {
   padding: 0;
   background-color: #f9f9f9 !important;
   height: 100vh;
+}
+.active {
+  font-weight: 600;
+  color: #f6ad55;
 }
 
 @media (min-width: 1024px) {

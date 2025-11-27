@@ -1,21 +1,23 @@
 <template>
-    <div class="container py-5" v-if="cart.length">
+    <div class="px-6 md:px-24 py-5" v-if="cart.length">
         <div class="inline">
-            <div class="d-flex align-items-center crsr mb-3" @click="router.back">
-                <font-awesome-icon :icon="['fas', 'arrow-left']" class="me-sm-2 me-0 px-sm-0 px-1"/>
+            <div class="flex items-center crsr mb-3" @click="router.back">
+                <font-awesome-icon :icon="['fas', 'arrow-left']" class=":sm-2 mr-0 :sm-px-0 px-1"/>
             </div>  
         </div>
         
-        <div class="row gx-5 px-sm-0 px-2">
-            <div class="col-lg-9">
-                <h3>Shipping Info</h3>
-                <Form @submit="onSubmit" :validation-schema="schema" class="my-4">
+        <div class="flex flex-col lg:flex-row justify-between gap-10 lg:gap-16 :sm-px-0 px-2">
+            <div class="flex-2">
+                <h3 class="text-2xl lg:text-3xl font-medium pb-2">Checkout</h3>
+                <hr class="mt-0 text-gray-400">
+                <p class="pt-2 font-medium">Shipping Info</p>
+                <Form @submit="onSubmit" :validation-schema="schema" class="my-3">
                 <Field name="name" type="text"
                     v-slot="{field, errors, errorMessage}" 
                     >
                     <input 
                     type="text"
-                    class="form-control stylee" 
+                    class="block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your name" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -30,7 +32,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee gray mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your company name (optional)" 
                     v-bind="field"
                     />
@@ -40,7 +42,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Select a country" 
                     v-bind="field"
                      :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -55,7 +57,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your Street Address" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -70,7 +72,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your City" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -82,7 +84,7 @@
                 </Field>
                 <Field name="state" type="text"
                     v-slot="{field, errors, errorMessage}">
-                    <select id="state" class="form-control mt-3" 
+                    <select id="state" class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'" 
                     v-bind="field"
                     >
@@ -149,7 +151,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your Zip Code" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -166,7 +168,7 @@
                     <textarea 
                     type="text"
                     rows="6"
-                    class="form-control gray stylee mt-3" 
+                   class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Notes about your order.." 
                     v-bind="field"
                     ></textarea>
@@ -178,13 +180,13 @@
                 </div>
               
              <div v-if="shipDetails" class="mt-3 mb-5">
-                <h3 class="mb-4">Billing Info</h3>
+                <p class="text-1xl font-medium">Billing Info</p>
                 <Field name="shipname" type="text"
                     v-slot="{field, errors, errorMessage}" 
                     >
                     <input 
                     type="text"
-                    class="form-control stylee" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your name" 
                     v-bind="field"
                      :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -199,7 +201,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Select a country" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -214,7 +216,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0"  
                     placeholder="Enter your Street Address" 
                     v-bind="field"
                      :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -229,7 +231,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your City" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -242,7 +244,7 @@
                 <Field name="shipstate" type="text"
                     v-slot="{field, errors, errorMessage}" 
                     >
-                    <select id="state" class="form-control mt-3" :class="errors.length !== 0 ? 'is-invalid' : 'gray'" v-bind="field">
+                    <select id="state" class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" :class="errors.length !== 0 ? 'is-invalid' : 'gray'" v-bind="field">
                         <option value="" selected="selected">Select a State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -306,7 +308,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your Zip Code" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -321,7 +323,7 @@
                     >
                     <input 
                     type="text"
-                    class="form-control stylee mt-3" 
+                   class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Enter your Phone number" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -336,7 +338,7 @@
                     >
                     <input 
                     type="email"
-                    class="form-control stylee mt-3" 
+                    class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0"  
                     placeholder="Enter your Email Address" 
                     v-bind="field"
                     :class="errors.length !== 0 ? 'is-invalid' : 'gray'"
@@ -347,64 +349,30 @@
                     </div>
                 </Field>
                 </div>
-                
-                <div class="d-flex align-items-center mb-3">
-                    <font-awesome-icon :icon="['fas', 'credit-card']" class="orng"/>
-                    <div class="ms-2">Credit / Debit Card</div>
-                </div>
-                <Field name="cardNumber"
-                    v-slot="{field}" 
-                    >
-                    <input 
-                    type="text"
-                    class="form-control gray stylee mt-3" 
-                    placeholder="Credit card number" 
-                    v-bind="field"
-                    >
-                </Field>
-                <Field name="cardExp"
-                    v-slot="{field}" 
-                    >
-                    <input 
-                    type="text"
-                    class="form-control gray stylee mt-3" 
-                    placeholder="Credit card Exp date" 
-                    v-bind="field"
-                    >
-                </Field>
-                <Field name="cardCode"
-                    v-slot="{field}" 
-                    >
-                    <input 
-                    type="text"
-                    class="form-control gray stylee mt-3" 
-                    placeholder="Credit card Security code" 
-                    v-bind="field"
-                    >
-                </Field>
-                    <base-button type="submit" class="mt-3">Place Order</base-button>
+                <base-button type="submit" class="cursor-pointer">Place Order</base-button>
                 </Form>
-            </div>
-            <div class="col-lg-3">
-                <h3>Order Summary</h3>
-                <hr>
-                <div class="d-flex justify-content-between">
+            </div> 
+
+            <div class="flex-1 mb-8">
+                <h3 class="text-2xl lg:text-3xl font-medium pb-2">Order Summary</h3>
+                <hr class="mt-0 text-gray-400">
+                <div class="flex justify-between py-4">
                     <div>Product</div>
                     <div>Subtotal</div>
                 </div>
-                <hr>
-                <div v-for="c in cart" :key="c.id" class="d-flex justify-content-between">
+                <hr class="mt-0 text-gray-400">
+                <div v-for="c in cart" :key="c.id" class="flex justify-between py-4">
                     <p>{{ c.title }} x {{ c.quantity }}</p>
-                    <p class="">${{ c.subtotal }}.00</p>
+                    <p class="">${{ c.price * c.quantity }}</p>
                 </div>
-                <hr class="mt-0">
-                    <div class="d-flex justify-content-between">
+                <hr class="mt-0 text-gray-400">
+                    <div class="flex justify-between py-4">
                         <p><b>Shipping:</b></p>
                         <p class="">{{ shippingResult }}</p>
                     </div>
-                    <div class="d-flex justify-content-between">
+                    <div class="flex justify-between">
                         <p><b>Grand Total:</b></p>
-                        <p class=""><b>${{ totalWithSHipping }}.00</b></p>
+                        <p><b>${{ Math.ceil(totalWithSHipping) }}</b></p>
                     </div>
                    
             </div>
@@ -471,12 +439,6 @@
         }
         billing.value.push(testTwo)
 
-        const testThree = {
-            cardNumber: values.cardNumber,
-            cardExp: values.cardExp,
-            cardCode: values.cardCode
-        }
-        card.value.push(testThree)
         router.push('/completed')
         CartCount.value = 0
         completed.value = [...cart.value]
@@ -584,7 +546,7 @@
         if(total.value >= 300){
             return shipRate.value = 'Free Shipping'
         } else {
-            return shipRate.value = '$' + 25 + '.00'
+            return shipRate.value = '$' + 25
         }
     })
 
@@ -603,7 +565,7 @@
     }
     .absoluteTop{
       position: fixed;
-      background-color: #333537;
+      background-color: #131313;
       padding: 6px 8px;
       bottom: 15px;
       right: 15px;
@@ -621,16 +583,6 @@
     }
     .red {
         color: red;
-    }
-    .gray {
-        border-color: #828181;
-    }
-    .stylee {
-        background-color: transparent;       
-        color: #333537;
-    }
-    .stylee::placeholder{
-        color: #828181;
     }
     input[type=checkbox] {
         width: 17px;

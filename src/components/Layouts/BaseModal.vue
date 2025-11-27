@@ -12,13 +12,14 @@
     const store = useMusicStore();
 
     import { storeToRefs } from 'pinia';
-    const { selectedFav, bigImage, NewAlbumError, selectedAlbumToDelete } = storeToRefs(store);
+    const { selectedFav, bigImage, NewAlbumError, selectedAlbumToDelete, cartModal } = storeToRefs(store);
 
 const cancel = () => {
     selectedFav.value = null;
     bigImage.value = false;
     NewAlbumError.value = false;
     selectedAlbumToDelete.value = null;
+    cartModal.value = null;
 }
 </script>
 
@@ -56,6 +57,34 @@ div{
         overflow: hidden;
         z-index: 100;
     }
+
+    .dialogCart {
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        left: auto;
+        margin: 0;
+        border: none;
+        padding: 0;
+        transform: translateX(100%);
+        animation: slideInFromRight .5s ease-out forwards;
+        max-width: 600px;
+        min-width: 485px;
+        min-height: 100vh;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        border-radius: 0;
+        overflow: hidden;
+        z-index: 100;
+    }
+
+     @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
 
     @media screen and (max-width: 780px) {
         .dialog2 {

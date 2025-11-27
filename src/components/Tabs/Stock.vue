@@ -1,6 +1,6 @@
 <template>
     <div class="brk">
-        <p>{{ currentAlbumItem.description }}</p>
+        <p><b>{{ currentAlbumItem.stock }}</b> in stock</p>
     </div>
 </template>
 

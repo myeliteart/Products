@@ -1,19 +1,19 @@
 <template>
-  <div class="container py-5">
-  <div class="row gx-4 px-md-0 px-2">
-    <h2>About us</h2>
-    <div class="col-lg-6 about">
-      <p class="py-1">
-        Welcome to vue by eli. Your destination for discovering and collecting your favorite music albums. 
-      </p>
-      <p>
-        Were passionate about bringing together music lovers and timeless collections, offering an easy and enjoyable browsing experience. Our goal is to make finding, comparing, and purchasing music albums simple — with clean design, fast navigation, and smart features built using modern web technologies.
-      </p>
-    </div>
-    <div class="col-lg-6">
-      <img :src="image" class="rounded img-fluid" alt="bobov rebbe">
-    </div>
-  </div>
+  <div class="mx-auto px-6 md:px-24 py-8">
+      <h2 class="text-2xl lg:text-4xl font-medium mb-4">About us</h2>
+      <div class="flex flex-col lg:flex-row gap-8 justify-between">
+        <div class="flex-1">
+          <img :src="image" class="rounded" alt="">
+        </div>
+        <div class="flex-1">
+          <span class="py-2">
+            Welcome to vue by eli. Your destination for discovering and collecting your favorite veriety of products.
+          </span> <br> <br>
+          <span>
+            Were passionate about bringing together mix products lovers and timeless collections, offering an easy and enjoyable browsing experience. Our goal is to make finding, comparing, and purchasing our products simple — with clean design, fast navigation, and smart features built using modern web technologies.
+          </span>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -22,10 +22,4 @@
 </script>
 
 <style scoped>
-.about p{
-  color: #333537;
-}
-@media (min-width: 1024px) {
- 
-}
 </style>

@@ -1,60 +1,87 @@
 <template>
+  <nav class="hidden lg:block list-none px-6 md:px-24 bg-gray-700 text-white border-b-4 border-orange-400 py-4">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark bar py-3">
-  <div class="container">
-    <router-link class="navbar-brand me-5" to="/" @click="closeNavbar"><h4 class="m-0">vue by <span class="orng">eli</span></h4></router-link>
-        <!-- <img :src="logo" class="img-fluid logo"> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse ms-lg-5 ms-0" id="navbarNav">
-      <ul class="navbar-nav me-auto my-2 my-lg-0">
-        <li class="nav-item me-3">
-            <router-link class="nav-link" aria-current="page" to="/" @click="closeNavbar">Home</router-link>
+  <!-- desktop -->
+
+  <div class="flex justify-between items-center">
+     <router-link to="/" @click="store.navOpen = false" class="">
+        <h4 class="text-white text-2xl font-bold">vue by <span class="text-orange-400">eli</span></h4>
+    </router-link>
+    <ul class="flex gap-12 my-2 lg:my-0">
+        <li class="">
+            <router-link to="/" >Home</router-link>
         </li>
-        <li class="nav-item me-3">
-            <router-link class="nav-link" aria-current="page" to="/about" @click="closeNavbar">About</router-link>
+        <li class="">
+            <router-link to="/about">About</router-link>
         </li>
-        <li class="nav-item me-3">
-            <router-link class="nav-link" aria-current="page" to="/music" @click="closeNavbar">Music</router-link>
+        <li class="">
+            <router-link to="/products">Products</router-link>
         </li>
-        <li class="nav-item me-3">
-            <router-link class="nav-link" aria-current="page" to="/favorites" @click="closeNavbar">
-              Favorites &nbsp; <span class="cnt">{{ listCount }}</span>
+        <li class="">
+            <router-link to="/favorites">
+              Favorites &nbsp; <span class="font-bold">{{ listCount }}</span>
             </router-link>
         </li>
-      </ul>
-      <form class="d-flex">
-          <input class="form-control me-2" type="search" v-model="searchedText" placeholder="Search Albums..." aria-label="Search">
-          <!-- <select class="form-select me-2">
-            <option :value="option1.id" v-for="option1 in options">{{ option1.name }}</option>
-          </select> -->
-          <!-- <button class="btn btn-outline-light" type="submit">Search</button> -->
+    </ul>
+      <form class="">
+          <input class="mr-2 outline-0 border px-3 py-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums..." aria-label="Search">
       </form>
-      <ul class="navbar-nav ms-auto my-2 my-lg-0">
-        <li class="nav-item me-0">
-            <router-link class="nav-link" aria-current="page" to="/shopping-cart" @click="closeNavbar">
-              <font-awesome-icon :icon="['fas', 'cart-shopping']" /> &nbsp; <span class="cnt">{{ CartCount }}</span>
+      <ul class="my-2 lg:my-0">
+        <li class="mr-0">
+            <router-link to="/shopping-cart">
+              <font-awesome-icon :icon="['fas', 'cart-shopping']" /> &nbsp; <span class="font-bold">{{ CartCount }}</span>
             </router-link>
         </li>
-        <!-- <li class="nav-item" v-if="!userStore.auth">
-            <router-link class="nav-link" aria-current="page" to="/sign-in" @click="closeNavbar">Sign In</router-link>
-          </li>
-          <li class="nav-item me-0" v-if="userStore.auth">
-            <a href="#" @click.prevent="logoutt" class="nav-link" aria-current="page">Logout</a>
-          </li>
-        <li class="nav-item me-0 ms-sm-3 ms-0" v-if="userStore.auth">
-          <router-link class="round nav-link active" to="/dashboard" @click="closeNavbar">{{ userStore.profileValues.firstName.trim().substring(1, 0).toUpperCase() }}{{ userStore.profileValues.lastName.trim().substring(1, 0).toUpperCase() }}</router-link>
-        </li> -->
       </ul>
     </div>
-  </div>
 </nav>
 
+  <!-- mobile -->
+  <nav class="block lg:hidden list-none px-6 md:px-24 bg-gray-700 text-white border-b-4 border-orange-400 py-4">
+
+  <div class="flex justify-between items-center">
+
+    <router-link to="/" @click="store.navOpen = false">
+        <h4 class="text-white text-2xl font-bold">vue by <span class="text-orange-400">eli</span></h4>
+    </router-link>
+    <div>
+        <div v-if="!store.navOpen" @click="store.navOpen = !store.navOpen" class="cursor-pointer">
+            <font-awesome-icon :icon="['fas', 'bars']" class="crsr text-gray-100"></font-awesome-icon>
+        </div>
+        <div  v-if="store.navOpen" @click="store.navOpen = false">
+          <font-awesome-icon :icon="['fas', 'xmark']" class="text-gray-100 cursor-pointer"></font-awesome-icon> 
+        </div>
+    </div>
+    </div>
+
+   <ul v-if="store.navOpen" class="pt-4 leading-11">
+        <li @click="store.navOpen = false">
+          <router-link to="/" >Home</router-link>
+        </li>
+        <li @click="store.navOpen = false">
+            <router-link to="/about">About</router-link>
+        </li>
+        <li @click="store.navOpen = false">
+            <router-link to="/products">Products</router-link>
+        </li>
+       <li @click="store.navOpen = false">
+            <router-link to="/favorites">
+              Favorites &nbsp; <span class="font-bold">{{ listCount }}</span>
+            </router-link>
+        </li>
+        <li @click="store.navOpen = false">
+            <router-link to="/shopping-cart">
+              <font-awesome-icon :icon="['fas', 'cart-shopping']" /> &nbsp; <span class="font-bold">{{ CartCount }}</span>
+            </router-link>
+        </li>
+        <form>
+          <input class="w-full outline-0 border px-3 py-0 mt-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
+      </form>
+   </ul>
+  </nav>
 </template>
 
 <script setup>
-    import { Collapse } from 'bootstrap'
     import { onMounted } from 'vue'
     const logo = new URL('@/assets/img/logo.png', import.meta.url).href
 
@@ -89,29 +116,19 @@ import router from '@/router';
     router.push('/')
   }
 
-let collapse = null
+// function closeNavbar() {
+//  const collapseElement = document.getElementById('navbarNav')
+//       if (!collapseElement) return
 
-onMounted(() => {
-  const navbar = document.getElementById('navbarNav')
-  if (navbar && window.bootstrap) {
-    collapse = window.bootstrap.Collapse.getOrCreateInstance(navbar)
-  }
-  console.log(collapse)
-})
-
-function closeNavbar() {
- const collapseElement = document.getElementById('navbarNav')
-      if (!collapseElement) return
-
-      const bsCollapse = Collapse.getInstance(collapseElement)
-      if (bsCollapse) {
-        bsCollapse.hide()
-      } else {
-        // Initialize and hide if no instance yet
-        const newCollapse = new Collapse(collapseElement)
-        newCollapse.hide()
-      }
-}
+//       const bsCollapse = Collapse.getInstance(collapseElement)
+//       if (bsCollapse) {
+//         bsCollapse.hide()
+//       } else {
+//         // Initialize and hide if no instance yet
+//         const newCollapse = new Collapse(collapseElement)
+//         newCollapse.hide()
+//       }
+// }
 
 </script>
 
@@ -128,9 +145,6 @@ function closeNavbar() {
         color: #afaeae;
     }
 
-    .bar {
-        border-bottom: 2px solid #F89829;
-    }
     .logo {
         width: 185px;
     }
@@ -171,8 +185,5 @@ function closeNavbar() {
 }
 .navbar-brand {
   font-weight: 500;
-}
-.orng {
-   color: #F89829;
 }
 </style>
