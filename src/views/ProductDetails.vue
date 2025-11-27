@@ -36,7 +36,7 @@
         <h3 class="text-2xl py-1 font-medium">You may also like</h3>
         <hr class="my-1 text-gray-400">
      </div>
-     <div class="mt-0 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-6">
+     <div class="mt-0 mb-6 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-6">
             <div v-for="item in sameArtistItems.slice(0, 5)" :key="item.id" class="zoom border rounded bg-white border-gray-400 hover:border-gray-700">
 
             <base-card>
