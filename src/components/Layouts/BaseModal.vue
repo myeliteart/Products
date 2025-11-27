@@ -46,7 +46,7 @@ div{
         z-index: 100;
     }
     .dialog2 {
-        position: fixed;
+        position: absolute;
         top: 8%;
         left: 0%;
         margin: 0 auto;
