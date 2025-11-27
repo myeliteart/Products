@@ -47,44 +47,46 @@
   </div>
  
      <teleport to="body">
-          <base-modal v-if="cartModal" mode="dialogCart" class="hidden sm:block">
-            <div class="flex justify-between items-center text-end px-4 py-2">
-              <h3 class="text-2xl font-medium">Your cart <span class="text-sm">{{ CartCount }}</span></h3>
-              <font-awesome-icon  @click="cartModal = null" :icon="['fas', 'x']" class="crsr"></font-awesome-icon>
-            </div>
-            <hr class="text-gray-300"></hr>
-            <p class="text-center py-6" v-if="!cart.length">Your cart is currently empty</p>
-            <div class="px-4 py-4" v-for="(item, index) in cart" :key="item.id">
-              <div class="wrap-break-word flex justify-between items-center gap-4">
-                <img :src="item.thumbnail" :alt="item.title" class="size-16 rounded">
-                <div>
-                  <small>{{ item.title }}</small>
-                  <p>${{ item.price }}</p>
-                </div>
-                  <div class="quantity">
-                    <button @click="decrease(item)" class="crsr">-</button>
-                    <input type="number" class="mx-1" v-model="item.quantity" @input="validateQuantity(item)">
-                    <button @click="increase(item)" class="crsr">+</button>
-                  </div>
-                  <div class="">
-                    <p>${{ (item.price * item.quantity) }}</p>
-                  </div>
-                  <font-awesome-icon :icon="['fas', 'trash-can']" @click="deleteItem(item, index)" class="cursor-pointer text-gray-500"></font-awesome-icon>
+      <div class="hidden sm:block">
+        <base-modal v-if="cartModal" mode="dialogCart">
+          <div class="flex justify-between items-center text-end px-4 py-2">
+            <h3 class="text-2xl font-medium">Your cart <span class="text-sm">{{ CartCount }}</span></h3>
+            <font-awesome-icon  @click="cartModal = null" :icon="['fas', 'x']" class="crsr"></font-awesome-icon>
+          </div>
+          <hr class="text-gray-300"></hr>
+          <p class="text-center py-6" v-if="!cart.length">Your cart is currently empty</p>
+          <div class="px-4 py-4" v-for="(item, index) in cart" :key="item.id">
+            <div class="wrap-break-word flex justify-between items-center gap-4">
+              <img :src="item.thumbnail" :alt="item.title" class="size-16 rounded">
+              <div>
+                <small>{{ item.title }}</small>
+                <p>${{ item.price }}</p>
               </div>
-                <hr class="text-gray-300 mt-7"></hr>
-          </div>
-          
-          <div class="flex justify-between font-bold items-center px-4 py-4" v-if="cart.length" >
-            <p>Subtotal:</p>
-            <div class="justify-end text-right"><span>${{ store.total }}</span></div>
-          </div>
-          
-          <div v-if="cart.length" class="flex gap-3 px-4 my-4">
-              <base-button mode="reverse" class="w-full cursor-pointer" @click="router.push('/shopping-cart')">View Cart</base-button>
-              <base-button class="w-full cursor-pointer" @click="router.push('/checkout')">Checkout</base-button>
-          </div>
-        </base-modal>
-    </teleport> 
+                <div class="quantity">
+                  <button @click="decrease(item)" class="crsr">-</button>
+                  <input type="number" class="mx-1" v-model="item.quantity" @input="validateQuantity(item)">
+                  <button @click="increase(item)" class="crsr">+</button>
+                </div>
+                <div class="">
+                  <p>${{ (item.price * item.quantity) }}</p>
+                </div>
+                <font-awesome-icon :icon="['fas', 'trash-can']" @click="deleteItem(item, index)" class="cursor-pointer text-gray-500"></font-awesome-icon>
+            </div>
+              <hr class="text-gray-300 mt-7"></hr>
+        </div>
+        
+        <div class="flex justify-between font-bold items-center px-4 py-4" v-if="cart.length" >
+          <p>Subtotal:</p>
+          <div class="justify-end text-right"><span>${{ store.total }}</span></div>
+        </div>
+        
+        <div v-if="cart.length" class="flex gap-3 px-4 my-4">
+            <base-button mode="reverse" class="w-full cursor-pointer" @click="router.push('/shopping-cart')">View Cart</base-button>
+            <base-button class="w-full cursor-pointer" @click="router.push('/checkout')">Checkout</base-button>
+        </div>
+      </base-modal>
+      </div>
+  </teleport> 
 
   <div class="relative">
       <font-awesome-icon :icon="['fas', 'angle-up']" class="absoluteTop crsr rounded orng" v-if="top" @click="backToTop" />
