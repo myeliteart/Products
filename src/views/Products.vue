@@ -14,26 +14,6 @@
             </div>
 
             <div class="my-5">
-              <h5 class="pb-1 cart font-bold">Catagory</h5>
-              <div v-for="cat in albumTitle">
-                <div class="my-2">
-                  <input name="cat" type="radio" class="mr-2 crsr" :value="cat" v-model="selectedFilterCat">
-                  <label>{{ cat }}</label> 
-                </div>
-              </div>
-            </div>
-
-            <!-- <div class="my-5">
-              <h5 class="py-1 cart font-bold">Artist</h5>
-              <div v-for="i in allArtists" :key="i" v-if="allArtists.length">
-                <div class="my-2">
-                  <input type="checkbox" class="mr-2 crsr" :value="i" v-model="checks">
-                  <label>{{ i }}</label> 
-                </div>
-              </div>
-            </div> -->
-
-             <div class="my-5">
               <h5 class="py-1 cart font-bold">Price</h5>
                   <div class="my-2">
                     <label class="mr-2">Min Price</label> 
@@ -44,6 +24,17 @@
                     <input type="number" class="mr-2 border border-gray-500 outline-0 px-2 py-1 rounded w-full md:w-fit mt-1" v-model="maxPrice">   
                   </div>
               </div>
+              
+            <div class="my-5">
+              <h5 class="pb-1 cart font-bold">Catagory</h5>
+              <div v-for="cat in albumTitle">
+                <div class="my-2">
+                  <input name="cat" type="radio" class="mr-2 crsr" :value="cat" v-model="selectedFilterCat">
+                  <label>{{ cat }}</label> 
+                </div>
+              </div>
+            </div>
+
             </div>
             
           <div class="flex-5"> 
