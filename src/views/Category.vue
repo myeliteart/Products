@@ -29,9 +29,9 @@
                     <p class="">${{ album.price }}.00</p>
                   </div>
 
-                    <div class="mt-1 crsr">
-                      <font-awesome-icon  @click="MyList(album)" :icon="[favorites.find(itm => itm.id == album.id) ? favSolid : favRegular, 'heart']"  class="me-3 orng"/>
-                      <font-awesome-icon :icon="['fas', 'cart-shopping']" :class="cart.find(itm => itm.id == album.id) ? 'orng' : 'cart'" @click="store.addToCart(album)" />
+                    <div class="mt-1 crsr justify-end">
+                      <font-awesome-icon  @click="MyList(album)" :icon="[favorites.find(itm => itm.id == album.id) ? favSolid : favRegular, 'heart']"  class="orng"/>
+                      <!-- <font-awesome-icon :icon="['fas', 'cart-shopping']" :class="cart.find(itm => itm.id == album.id) ? 'orng' : 'cart'" @click="store.addToCart(album)" /> -->
                     </div>
                 </div>
               </template>
@@ -39,7 +39,7 @@
         </div>  
         </div>
 
-        <teleport to="body">
+        <!-- <teleport to="body">
           <div class="hidden sm:block">
               <base-modal v-if="cartModal" mode="dialogCart">
                 <div class="flex justify-between items-center text-end px-4 py-2">
@@ -79,7 +79,7 @@
               </div>
             </base-modal>
             </div>
-        </teleport> 
+        </teleport>  -->
 
     </div>
     </div>

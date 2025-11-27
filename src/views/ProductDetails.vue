@@ -53,9 +53,9 @@
                             <p>${{ item.price }}</p>
                         </div>
                     
-                        <div class="mt-1 crsr">
-                            <font-awesome-icon  @click="MyList2(item)" :icon="[favorites.find(itm => itm.id == item.id) ? favSolid : favRegular, 'heart']"  class="mr-3 orng"/>
-                            <font-awesome-icon :icon="['fas', 'cart-shopping']" :class="cart.find(itm => itm.id == item.id) ? 'orng' : 'cart'" @click="store.addToCart(item)" />
+                        <div class="mt-1 crsr justify-end">
+                            <font-awesome-icon  @click="MyList2(item)" :icon="[favorites.find(itm => itm.id == item.id) ? favSolid : favRegular, 'heart']"  class="orng"/>
+                            <!-- <font-awesome-icon :icon="['fas', 'cart-shopping']" :class="cart.find(itm => itm.id == item.id) ? 'orng' : 'cart'" @click="store.addToCart(item)" /> -->
                         </div>
                     </div>
                 </template>

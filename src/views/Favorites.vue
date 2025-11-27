@@ -30,8 +30,8 @@
                     <h6 class="my-1 crsr underL font-medium" @click="toMusicDetail(fav)">{{ fav.title }}</h6>
                     <p>${{ fav.price }}</p>
                   </div>
-                  <div class="mt-1 crsr">
-                    <font-awesome-icon :icon="['fas', 'cart-shopping']" class="mr-4" :class="cart.find(itm => itm.id == fav.id) ? 'orng' : 'cart'"  @click="store.addToCart(fav)" />
+                  <div class="mt-1 crsr justify-end">
+                    <!-- <font-awesome-icon :icon="['fas', 'cart-shopping']" class="mr-4" :class="cart.find(itm => itm.id == fav.id) ? 'orng' : 'cart'"  @click="store.addToCart(fav)" /> -->
                     <font-awesome-icon :icon="['far', 'trash-can']" @click="selectedFav = fav"/>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
           </div>
         </teleport>
 
-   <teleport to="body">
+   <!-- <teleport to="body">
        <div class="hidden sm:block">
           <base-modal v-if="cartModal" mode="dialogCart">
             <div class="flex justify-between items-center text-end px-4 py-2">
@@ -101,7 +101,7 @@
           </div>
         </base-modal>
         </div>
-    </teleport> 
+    </teleport>  -->
 
    <div class="position">
       <font-awesome-icon :icon="['fas', 'angle-up']" class="absoluteTop crsr rounded orng" v-if="top" @click="backToTop" />
