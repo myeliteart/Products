@@ -32,7 +32,7 @@
         </div>
      </div>
 
-     <div v-if="sameArtistItems.length" class="py-8">
+     <div v-if="sameArtistItems.length" class="py-6">
         <h3 class="text-2xl py-1 font-medium">You may also like</h3>
         <hr class="my-1 text-gray-400">
      </div>
