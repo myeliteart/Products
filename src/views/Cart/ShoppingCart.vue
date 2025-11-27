@@ -44,7 +44,7 @@
           </tbody>
         </table>
         <div class="flex-1 bg-gray-200 p-8 h-fit">
-            <div class="flex justify-between text-2xl font-medium">
+            <div class="flex justify-between gap-4 text-2xl font-medium">
               <p>Subtotal</p>
               <p>${{ Math.ceil(total) }}</p>
             </div>
