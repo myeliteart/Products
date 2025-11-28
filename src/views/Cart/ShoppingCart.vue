@@ -16,7 +16,7 @@
       <p class="text-2xl lg:text-4xl font-medium">Your cart</p>
     </div>
     <div class="flex flex-col md:flex-row gap-8 mb-8">
-        <table class="mx-auto flex-3 h-fit">
+        <table class="mx-auto flex-3 h-fit overflow-visible md:overflow-hidden">
            <tbody>
             <tr>
               <th></th>
