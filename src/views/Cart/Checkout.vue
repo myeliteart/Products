@@ -6,7 +6,7 @@
             </div>  
         </div>
         
-        <div class="flex flex-col lg:flex-row justify-between gap-10 lg:gap-16 :sm-px-0 px-2">
+        <div class="flex flex-col-reverse lg:flex-row justify-between gap-10 lg:gap-16 :sm-px-0 px-2">
             <div class="flex-2">
                 <h3 class="text-2xl lg:text-3xl font-medium pb-2">Checkout</h3>
                 <hr class="mt-0 text-gray-400">
