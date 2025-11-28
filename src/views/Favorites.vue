@@ -30,7 +30,7 @@
                     <h6 class="my-1 crsr underL font-medium" @click="toMusicDetail(fav)">{{ fav.title }}</h6>
                     <p>${{ fav.price }}</p>
                   </div>
-                  <div class="mt-1 crsr justify-end">
+                  <div class="crsr justify-end">
                     <!-- <font-awesome-icon :icon="['fas', 'cart-shopping']" class="mr-4" :class="cart.find(itm => itm.id == fav.id) ? 'orng' : 'cart'"  @click="store.addToCart(fav)" /> -->
                     <font-awesome-icon :icon="['far', 'trash-can']" @click="selectedFav = fav"/>
                   </div>

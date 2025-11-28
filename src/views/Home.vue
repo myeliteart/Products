@@ -28,7 +28,7 @@
                       <p class="">${{ album.price }}</p>
                     </div>
 
-                    <div class="mt-1 crsr justify-end">
+                    <div class="crsr justify-end">
                       <font-awesome-icon  @click="MyList(album)" :icon="[favorites.find(itm => itm.id == album.id) ? favSolid : favRegular, 'heart']" class="text-orange-400"/>
                       <!-- <font-awesome-icon class="" :icon="['fas', 'cart-shopping']" :class="cart.find(itm => itm.id == album.id) ? 'text-orange-400' : 'cart'" @click="store.addToCart(album)" /> -->
                   </div>
