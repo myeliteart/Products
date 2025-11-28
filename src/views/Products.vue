@@ -205,7 +205,7 @@
     const reset = () => {
       searchedText.value = ''
       checks.value.length = 0
-      selectedFilterCat.value = 'beauty'
+      // selectedFilterCat.value = 'beauty'
       maxPrice.value = ''
       minPrice.value = ''
     } 
