@@ -2,7 +2,7 @@
     <div class="mx-auto px-6 md:px-24 py-8">
         <div class="gap-10 flex flex-col-reverse md:flex-row">
          <div class="flex-1">
-            <div class="flex justify-between items-center mb-3">
+            <div class="flex justify-between items-center mb-1">
               <div>
                 <font-awesome-icon :icon="['fas', 'filter']" class="text-gray-600" />
                 Filter by:
@@ -167,35 +167,6 @@
         favorites.value.unshift(album)
         listCount.value++
       }
-    }
-
-     const decrease = (item) => {
-      if(item.quantity > 1) {
-        item.quantity--
-        CartCount.value--
-        store.calculateTotal();
-      } 
-    }
-
-    const increase = (item) => {
-      if(item.quantity < 25 ){
-        item.quantity++
-        CartCount.value++
-        store.calculateTotal();
-      } 
-    }
-
-     function validateQuantity(item) {
-      if (item.quantity < 1) item.quantity = 1;
-      if (item.quantity > 25) item.quantity = 25;
-      CartCount.value = cart.value.reduce((acc, itemm) => acc + itemm.quantity, 0); // Update CartCount based on quantity of all items
-      store.calculateTotal();
-    }
-
-     const deleteItem = (item, idx) => {
-      cart.value.splice(idx, 1)
-      CartCount.value -= item.quantity
-      store.total -= item.price * item.quantity
     }
 
     const artistDetails = (item) => {
