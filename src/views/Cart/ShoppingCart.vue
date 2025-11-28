@@ -15,8 +15,36 @@
     <div class="pb-4">
       <p class="text-2xl lg:text-4xl font-medium">Your cart</p>
     </div>
-    <div class="flex flex-col md:flex-row gap-8 mb-8">
-        <table class="mx-auto flex-3 h-fit">
+    <div class="flex flex-col md:flex-row gap-10 mb-8">
+      <div class="flex-3 h-fit">
+          <div v-for="(c, index) in cart">
+            <div class="flex flex-row gap-6 justify-between items-center">
+              <div @click="backToDetails(c)">
+                <img :src="c.thumbnail" class="size-22 rounded crsr"></img>
+              </div>
+              <div>
+                <div class="crsr underL pb-1" @click="backToDetails(c)">{{ c.title }}</div>
+                <div>${{ c.price }}</div>
+                <div class="quantity pt-2">
+                  <button @click="decrease(c)" class="crsr">-</button>
+                  <input type="number" class="mx-1 md:mx-2" v-model="c.quantity" @input="validateQuantity(c)">
+                  <button @click="increase(c)" class="crsr">+</button>
+                </div>
+              </div>
+              <div>
+                <div @click="deleteItem(c, index)">
+                  <font-awesome-icon :icon="['fas', 'trash-can']" class="text-gray-500 crsr"></font-awesome-icon>
+                </div>
+              </div>
+              
+              <div>
+                ${{ Math.ceil(c.subtotal = c.price * c.quantity) }}
+              </div>        
+            </div>
+            <hr class="my-6 text-gray-400"></hr>
+        </div>
+        </div>
+        <!-- <table class="mx-auto flex-3 h-fit">
            <tbody>
             <tr>
               <th></th>
@@ -42,7 +70,7 @@
               <td>${{ Math.ceil(c.subtotal = c.price * c.quantity) }}</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
         <div class="flex-1 bg-gray-200 p-8 h-fit">
             <div class="flex justify-between gap-4 text-2xl font-medium">
               <p>Subtotal</p>
@@ -203,7 +231,7 @@
       text-decoration: underline;
     }
     @media screen and (max-width: 60rem) {
-      .quantity input {
+      /* .quantity input {
       width: 30px;
       padding: 0;
       background-color: transparent;
@@ -219,6 +247,6 @@
       color: #333537;
       border-radius: .2rem;
       font-size: 20px;
-    }
+    } */
     }
 </style>
