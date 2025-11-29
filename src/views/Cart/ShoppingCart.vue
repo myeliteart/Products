@@ -27,7 +27,7 @@
                 <div>${{ c.price }}</div>
                 <div class="quantity pt-2">
                   <button @click="decrease(c)" class="crsr">-</button>
-                  <input type="number" class="mx-1 md:mx-2" v-model="c.quantity" @input="validateQuantity(c)">
+                  <input type="number" class="mx-1 md:mx-2 outline-0" v-model="c.quantity" @input="validateQuantity(c)">
                   <button @click="increase(c)" class="crsr">+</button>
                 </div>
               </div>
@@ -41,7 +41,7 @@
                 ${{ Math.ceil(c.subtotal = c.price * c.quantity) }}
               </div>        
             </div>
-            <hr class="my-6 text-gray-400"></hr>
+            <hr class="my-4 text-gray-400"></hr>
         </div>
         </div>
         <!-- <table class="mx-auto flex-3 h-fit">
