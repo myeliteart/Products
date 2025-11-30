@@ -26,7 +26,7 @@
             </div>
 
             <div class="mt-18 mb-4 flex cursor-pointer gap-12">
-                <p v-for="tab in tabs" class="stly" @click="matchTab(tab)" :class="selectedTab == tab.toLowerCase().split(' ').join('-').replace('information', 'info') ? 'tabStyle' : ''">{{ tab }} <b :class="tab == 'reviews' ? 'ml-3' : ''">{{ tab.toLowerCase().split(' ').join('-').replace('information', 'info') == 'reviews' ? currentAlbumItem.reviews.length : '' }}</b></p>
+                <p v-for="tab in tabs" class="stly" @click="matchTab(tab)" :class="selectedTab == tab.toLowerCase().split(' ').join('-').replace('information', 'info') ? 'tabStyle' : ''">{{ tab }} <b :class="tab == 'reviews' ? 'ml-6' : ''">{{ tab.toLowerCase().split(' ').join('-').replace('information', 'info') == 'reviews' ? currentAlbumItem.reviews.length : '' }}</b></p>
             </div>
             <component :is="selectedTab"></component>
         </div>
