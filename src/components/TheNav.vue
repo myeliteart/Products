@@ -23,9 +23,9 @@
             </router-link>
         </li>
     </ul>
-      <form class="">
-          <input class="mr-2 outline-0 border px-3 py-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums..." aria-label="Search">
-      </form>
+      <div>
+          <input class="mr-2 outline-0 border border-gray-500 px-3 py-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
+      </div>
       <ul class="my-2 lg:my-0">
         <li class="mr-0">
             <router-link to="/shopping-cart">
@@ -74,9 +74,9 @@
               <font-awesome-icon :icon="['fas', 'cart-shopping']" /> &nbsp; <span class="font-bold">{{ CartCount }}</span>
             </router-link>
         </li>
-        <form>
-          <input class="w-full outline-0 border px-3 py-0 mt-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
-      </form>
+        <div>
+          <input class="w-full outline-0 border border-gray-500 px-3 py-0 mt-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
+        </div>
    </ul>
   </nav>
 </template>
