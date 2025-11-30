@@ -27,7 +27,7 @@
                 <div>${{ c.price }}</div>
                 <div class="quantity pt-2">
                   <button @click="decrease(c)" class="crsr">-</button>
-                  <input type="number" class="mx-1 md:mx-2 outline-0 w-56" v-model="c.quantity" @input="validateQuantity(c)">
+                  <input type="number" class="mx-1 md:mx-2 outline-0" v-model="c.quantity" @input="validateQuantity(c)">
                   <button @click="increase(c)" class="crsr">+</button>
                 </div>
               </div>
@@ -172,6 +172,7 @@
     }
 
     .quantity input {
+      width: 50px;
       padding: 3px 10px;
       background-color: transparent;
       border: 1px solid #68696b;
