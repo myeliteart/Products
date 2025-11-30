@@ -15,12 +15,12 @@
     <div class="pb-4">
       <p class="text-2xl lg:text-4xl font-medium">Your cart</p>
     </div>
-    <div class="flex flex-col md:flex-row gap-10 mb-8">
+    <div class="flex flex-col md:flex-row gap-14 mb-8">
       <div class="flex-3 h-fit">
           <div v-for="(c, index) in cart">
             <div class="flex flex-row gap-6 justify-between items-center">
               <div @click="backToDetails(c)">
-                <img :src="c.thumbnail" class="size-22 rounded crsr"></img>
+                <img :src="c.thumbnail" class="size-22 crsr"></img>
               </div>
               <div>
                 <div class="crsr underL pb-1" @click="backToDetails(c)">{{ c.title }}</div>
