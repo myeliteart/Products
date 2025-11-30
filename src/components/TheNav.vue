@@ -24,7 +24,7 @@
         </li>
     </ul>
       <div>
-          <input class="mr-2 outline-0 border border-gray-500 px-3 py-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
+          <input class="mr-2 outline-0 border border-gray-400 px-3 py-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
       </div>
       <ul class="my-2 lg:my-0">
         <li class="mr-0">
@@ -75,7 +75,7 @@
             </router-link>
         </li>
         <div>
-          <input class="w-full outline-0 border border-gray-500 px-3 py-0 mt-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
+          <input class="w-full outline-0 border border-gray-400 px-3 py-0 mt-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
         </div>
    </ul>
   </nav>
