@@ -44,33 +44,7 @@
             <hr class="my-4 text-gray-400"></hr>
         </div>
         </div>
-        <!-- <table class="mx-auto flex-3 h-fit">
-           <tbody>
-            <tr>
-              <th></th>
-              <th>Image</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-            </tr>
-          
-            <tr v-for="(c, index) in cart">
-              <td class="text-center" @click="deleteItem(c, index)"><font-awesome-icon :icon="['fas', 'xmark']" class="text-gray-500"></font-awesome-icon></td>
-              <td @click="backToDetails(c)">
-                <img :src="c.thumbnail" class="size-14 mx-auto rounded crsr">
-              </td>
-              <td class="crsr underL" @click="backToDetails(c)">{{ c.title }}</td>
-              <td>${{ c.price }}</td>
-              <td class="quantity">
-                <button @click="decrease(c)" class="crsr">-</button>
-                <input type="number" class="mx-1 md:mx-2" v-model="c.quantity" @input="validateQuantity(c)">
-                <button @click="increase(c)" class="crsr">+</button>
-              </td>
-              <td>${{ Math.ceil(c.subtotal = c.price * c.quantity) }}</td>
-            </tr>
-          </tbody>
-        </table> -->
+
         <div class="flex-1 bg-gray-200 p-8 h-fit">
             <div class="flex justify-between gap-4 text-2xl font-medium">
               <p>Subtotal</p>
@@ -198,8 +172,7 @@
     }
 
     .quantity input {
-      width: 50px;
-      padding: 10px 15px 6px 15px;
+      padding: 3px 10px;
       background-color: transparent;
       border: 1px solid #68696b;
       border-radius: .2rem;
@@ -207,12 +180,11 @@
       text-align: center;
     }
     .quantity button {
-      padding: 5px 15px;
+      padding: 3px 10px;
       background-color: transparent;
       border: 1px solid #68696b;
       color: #333537;
       border-radius: .2rem;
-      font-size: 20px;
     }
 
     input::-webkit-outer-spin-button,
