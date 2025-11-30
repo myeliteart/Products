@@ -172,7 +172,7 @@
     }
 
     .quantity input {
-      width: 50px;
+      width: 47px;
       padding: 3px 10px;
       background-color: transparent;
       border: 1px solid #68696b;
