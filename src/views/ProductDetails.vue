@@ -18,7 +18,7 @@
         <div class="my-1 flex-1">
             <p class="font-medium crsr underL inline-block" @click="artistDetails(currentAlbumItem)">{{ currentAlbumItem.category }}</p>
             <h3 class="text-2xl font-medium py-1">{{ currentAlbumItem.title }}</h3>
-            <h5 class="mb-0 mt-1">${{ currentAlbumItem.price }}</h5>
+            <h5 class="mb-0 mt-1">${{ Number(currentAlbumItem.price.toFixed(2)).toLocaleString('en-US') }}</h5>
             <audio controls :src="currentAlbumItem.audio" v-if="currentAlbumItem.audio" class="my-2"></audio> <br>
             <div class="flex gap-8 mt-1">
                 <base-button mode="round" @click="store.addToCart(currentAlbumItem)" class="crsr">Add to Cart</base-button>
@@ -77,15 +77,15 @@
                     <img :src="item.thumbnail" :alt="item.title" class="size-16 rounded">
                     <div>
                       <small>{{ item.title }}</small>
-                      <p>${{ item.price }}</p>
+                      <p>${{ Number(item.price.toFixed(2)).toLocaleString('en-US') }}</p>
                     </div>
                       <div class="quantity">
                         <button @click="decrease(item)" class="crsr">-</button>
                         <input type="number" class="mx-1" v-model="item.quantity" @input="validateQuantity(item)">
                         <button @click="increase(item)" class="crsr">+</button>
                       </div>
-                      <div class="">
-                        <p>${{ (Math.ceil(item.price * item.quantity)) }}</p>
+                      <div>
+                        <p>${{ Number(item.price.toFixed(2) * item.quantity).toLocaleString('en-US') }}</p>
                       </div>
                       <font-awesome-icon :icon="['fas', 'trash-can']" @click="deleteItem(item, index)" class="cursor-pointer text-gray-500"></font-awesome-icon>
                   </div>
@@ -94,7 +94,7 @@
               
               <div class="flex justify-between font-bold items-center px-4 py-4" v-if="cart.length" >
                 <p>Subtotal:</p>
-                <div class="justify-end text-right"><span>${{ Math.ceil(store.total) }}</span></div>
+                <div class="justify-end text-right"><span>${{ Number(store.total.toFixed(2)).toLocaleString('en-US') }}</span></div>
               </div>
               
               <div v-if="cart.length" class="flex gap-3 px-4 my-4">

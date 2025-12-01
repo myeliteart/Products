@@ -61,18 +61,19 @@
                     <img :src="album.thumbnail" @click="toMusicDetail(album)" class="crsr border-b border-b-gray-300" :alt="album.title">
                 </div>
               </template>
+              
               <template v-slot:bottom>
                 <div class="flex justify-between">
                   <div>
                     <p class="crsr underL" @click="artistDetails(album)">{{ album.category }}</p>
                     <h6 class="my-1 crsr underL font-medium" @click="toMusicDetail(album)">{{ album.title }}</h6>
-                    <p>${{ album.price }}</p>
+                    <p>${{ Number(album.price.toFixed(2)).toLocaleString('en-US') }}</p>
                   </div>
 
-                    <div class="crsr justify-end">
-                      <font-awesome-icon  @click="MyList(album)" :icon="[favorites.find(itm => itm.id == album.id) ? favSolid : favRegular, 'heart']"  class="text-orange-400 font-medium"/>
-                      <!-- <font-awesome-icon class="" :icon="['fas', 'cart-shopping']" :class="cart.find(itm => itm.id == album.id) ? 'text-orange-400' : 'cart'" @click="store.addToCart(album)" /> -->
-                    </div>
+                  <div class="crsr justify-end">
+                    <font-awesome-icon  @click="MyList(album)" :icon="[favorites.find(itm => itm.id == album.id) ? favSolid : favRegular, 'heart']"  class="text-orange-400 font-medium"/>
+                    <!-- <font-awesome-icon class="" :icon="['fas', 'cart-shopping']" :class="cart.find(itm => itm.id == album.id) ? 'text-orange-400' : 'cart'" @click="store.addToCart(album)" /> -->
+                  </div>
                 </div>
               </template>
           </base-card>
@@ -100,7 +101,7 @@
     const store = useMusicStore();
 
     import { storeToRefs } from 'pinia';
-    const { albumTitle, selectedFilterCat, products, cartModal, searchedText, favSolid, favRegular, sorted, minPrice, maxPrice, allArtists, sortedSelected, favorites, listCount, filteredMusic, selectedAlbum, CartCount, itemAdded, cart, checks, artistCounts } = storeToRefs(store);
+    const { albumTitle, selectedFilterCat, products, cartModal, searchedText, favSolid, favRegular, sorted, minPrice, maxPrice, allArtists, sortedSelected, favorites, listCount, filteredMusic, CartCount, itemAdded, cart, checks, artistCounts } = storeToRefs(store);
 
     const toMusicDetail = (item) => {
       router.push({ name: 'ProductDetails', params: {id: item.title.toLowerCase().split(' ').join('-')}});

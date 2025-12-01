@@ -25,7 +25,7 @@
                     <div>
                       <p class="crsr underL font-medium" @click="artistDetails(album)">{{ album.category }}</p>
                       <h6 class="my-1 crsr underL" @click="toMusicDetail(album)">{{ album.title }}</h6>
-                      <p class="">${{ album.price }}</p>
+                      <p class="">${{ Number(album.price.toFixed(2)).toLocaleString('en-US') }}</p>
                     </div>
 
                     <div class="crsr justify-end">
