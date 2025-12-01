@@ -24,7 +24,7 @@
               </div>
               <div>
                 <div class="crsr underL pb-1" @click="backToDetails(c)">{{ c.title }}</div>
-                <div>${{ c.price }}</div>
+                <div>${{ Number(c.price.toFixed(2)).toLocaleString('en-US') }}</div>
                 <div class="quantity pt-2">
                   <button @click="decrease(c)" class="crsr">-</button>
                   <input type="number" class="mx-1 md:mx-2 outline-0" v-model="c.quantity" @input="validateQuantity(c)">
@@ -38,17 +38,17 @@
               </div>
               
               <div>
-                ${{ Math.ceil(c.subtotal = c.price * c.quantity) }}
+                ${{ Number(c.price.toFixed(2).toLocaleString('en-US')) * c.quantity }}
               </div>        
             </div>
             <hr class="my-4 text-gray-400"></hr>
         </div>
         </div>
-
+       
         <div class="flex-1 bg-gray-200 p-8 h-fit">
             <div class="flex justify-between gap-4 text-2xl font-medium">
               <p>Subtotal</p>
-              <p>${{ Math.ceil(total) }}</p>
+              <p>${{ Number(total.toFixed(2)).toLocaleString('en-US') }}</p>
             </div>
             <p class="my-6">Shipping calculated at checkout.</p>
             <base-button mode="reverse" @click="router.push('/products')" class="crsr w-full">Continue shopping</base-button>
@@ -147,9 +147,6 @@
     .crsr {
       cursor: pointer;
     }
-    /* .orng {
-      color: #F89829;
-    } */
     .orng1 {
       color: #333537;
       font-weight: bold;
@@ -170,9 +167,8 @@
       color: #333537;
       cursor: pointer;
     }
-
     .quantity input {
-      width: 47px;
+      width: 45px;
       padding: 3px 10px;
       background-color: transparent;
       border: 1px solid #68696b;

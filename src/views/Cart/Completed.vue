@@ -54,12 +54,12 @@
                      <hr class="mt-0 text-gray-400">
                     <div class="flex justify-between py-2">
                         <div>Price:</div> 
-                        <div>${{ c.price }}</div>
+                        <div>${{ Number(c.price.toFixed(2)).toLocaleString('en-US') }}</div>
                     </div>
                      <hr class="mt-0 text-gray-400">
                     <div class="flex justify-between py-2">
                           <div>Total:</div>
-                          <div>${{ c.subtotal }}</div>
+                          <div>${{ Number(c.price.toFixed(2).toLocaleString('en-US')) * c.quantity }}</div>
                     </div>
                      <hr class="mt-0 text-gray-400">
                 </div>
@@ -114,7 +114,7 @@
 
     const totalWithSHipping = computed(() => {
         if(shipRate.value !== 'Free Shipping') {
-            return total + 25
+            return Number(total.toFixed(2).toLocaleString('en-US')) + 25
         } else {
             return total
         }

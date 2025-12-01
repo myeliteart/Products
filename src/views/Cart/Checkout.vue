@@ -168,7 +168,7 @@
                     <textarea 
                     type="text"
                     rows="6"
-                   class="mt-3 block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
+                   class="mt-3 wrap-break-word block w-full border border-gray-500 px-2 py-1 rounded outline-0" 
                     placeholder="Notes about your order.." 
                     v-bind="field"
                     ></textarea>
@@ -363,7 +363,7 @@
                 <hr class="mt-0 text-gray-400">
                 <div v-for="c in cart" :key="c.id" class="flex justify-between py-4">
                     <p>{{ c.title }} x {{ c.quantity }}</p>
-                    <p class="">${{ c.price * c.quantity }}</p>
+                    <p>${{ Number(c.price.toFixed(2).toLocaleString('en-US')) * c.quantity }}</p>
                 </div>
                 <hr class="mt-0 text-gray-400">
                     <div class="flex justify-between py-4">
@@ -372,7 +372,7 @@
                     </div>
                     <div class="flex justify-between">
                         <p><b>Grand Total:</b></p>
-                        <p><b>${{ Math.ceil(totalWithSHipping) }}</b></p>
+                        <p><b>${{ Number(totalWithSHipping.toFixed(2)).toLocaleString('en-US')}}</b></p>
                     </div>
                    
             </div>
