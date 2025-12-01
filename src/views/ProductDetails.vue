@@ -110,7 +110,7 @@
         <base-modal mode="dialog2" v-if="bigImage">
           <div class="p-0 relative" v-for="img in currentAlbumItem.images.slice(0, 1)">
               <span class="absolute right-2 top-2 s p-2 crsr" @click="bigImage = false"><font-awesome-icon :icon="['fas', 'xmark']"></font-awesome-icon></span>
-              <img :src="img" class="rounded size-80 md:size-160 py-4" :alt-="currentAlbumItem.title">
+              <img :src="img" class="rounded size-80 lg:size-160 py-4" :alt-="currentAlbumItem.title">
               <div class="absoluteDown text-white w-full bg-gray-700">{{ currentAlbumItem.title }}</div>
           </div>
         </base-modal>
