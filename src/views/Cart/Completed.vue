@@ -114,7 +114,7 @@
 
     const totalWithSHipping = computed(() => {
         if(shipRate.value !== 'Free Shipping') {
-            return Number(total.toFixed(2).toLocaleString('en-US')) + 25
+            return Number(total.toFixed(2)).toLocaleString('en-US') + 25
         } else {
             return total
         }
