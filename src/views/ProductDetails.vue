@@ -50,7 +50,7 @@
                         <div>
                             <p class="crsr underL" @click="artistDetails(item)">{{ item.category }}</p>
                             <h6 class="my-1 crsr font-medium underL" @click="relatedMusicDetail(item)">{{ item.title }}</h6>
-                            <p>${{ item.price }}</p>
+                            <p>${{ Number(item.price.toFixed(2)).toLocaleString('en-US') }}</p>
                         </div>
                     
                         <div class="crsr justify-end">
@@ -217,9 +217,6 @@
 
 
 <style scoped>
-    /* .s {
-        filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
-    } */
      .orng {
       color: #F89829;
      }
