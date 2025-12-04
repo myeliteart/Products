@@ -75,8 +75,8 @@
             <router-link to="/products">Products</router-link>
         </li>
        <li @click="store.navOpen = false">
-            <router-link to="/favorites">
-              Favorites &nbsp; <span class="font-bold">{{ listCount }}</span>
+            <router-link to="/wishlist">
+              Wishlist &nbsp; <span class="font-bold">{{ listCount }}</span>
             </router-link>
         </li>
         <li @click="store.navOpen = false">
