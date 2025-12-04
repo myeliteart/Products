@@ -11,7 +11,7 @@
                 <font-awesome-icon :icon="['fas', 'rotate-right']"  class="text-gray-600 mr-1" />
                 Reset
               </div>
-            </div>
+            </div> 
 
             <div class="my-5">
               <h5 class="py-1 cart font-bold">Price</h5>
@@ -43,22 +43,22 @@
             </div>
             <div class="flex justify-between items-center pb-4" v-if="filteredMusic.length">
               <h1 class="text-2xl lg:text-4xl font-medium">{{ selectedFilterCat }}</h1>
-              <div class="ml-auto">
-                <select class="outline-0" v-model="sortedSelected">
+              <label class="ml-auto" for="mySelect">
+                <select class="outline-0" v-model="sortedSelected" id="mySelect">
                   <option disabled :value="''">Sort By:</option>
                   <option v-for="s in sorted" :value="s">{{ s }}</option>
                 </select>
-              </div>
+              </label>
             </div>
 
         <!-- grid View -->
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div class="mb-4 zoom border rounded bg-white border-gray-400 hover:border-gray-700" v-for="album in filteredMusic" :key="album.id">
+          <div class="mb-4 zoom border rounded bg-white border-gray-400 hover:border-gray-600" v-for="album in filteredMusic" :key="album.id">
             <base-card>
               <template v-slot:top>
                 <div class="relative">
-                    <img :src="album.thumbnail" @click="toMusicDetail(album)" class="crsr border-b border-b-gray-300" :alt="album.title">
+                    <img :src="album.thumbnail" @click="toMusicDetail(album)" class="crsr border-b border-b-gray-400" :alt="album.title">
                 </div>
               </template>
               

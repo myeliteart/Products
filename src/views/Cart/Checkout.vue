@@ -546,7 +546,7 @@
         if(total.value >= 300){
             return shipRate.value = 'Free Shipping'
         } else {
-            return shipRate.value = '$' + 25
+            return shipRate.value = '$' + Number(25).toFixed(2)
         }
     })
 

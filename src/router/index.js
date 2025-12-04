@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import ProductList from '@/views/Dashboard/ProductList.vue';
+import NewProduct from '@/views/Dashboard/NewProduct.vue';
+import OrderHistory from '@/views/Dashboard/OrderHistory.vue';
+
 //  import { auth } from '@/firebase';
  import { useUserStore } from '@/stores/user';
 
@@ -35,9 +39,9 @@ const router = createRouter({
       component: () => import('../views/Category.vue'),
     },
     {
-      path: '/favorites',
-      name: 'favorites',
-      component: () => import('../views/Favorites.vue'),
+      path: '/wishlist',
+      name: 'Wishlist',
+      component: () => import('../views/Wishlist.vue'),
     },
     {
       path: '/sign-in',
@@ -69,8 +73,13 @@ const router = createRouter({
     // {
     //   path: '/dashboard',
     //   name: 'Dashboard',
+    //   redirect: '/dashboard/product-list',
     //   component: () => import('../views/Dashboard/Dashboard.vue'),
-    //   meta: { requiresAuth: true }
+    //   children: [
+    //     {path: 'product-list', component: ProductList},
+    //     // {path: 'new-product', component: NewProduct},
+    //     {path: 'order-history', component: OrderHistory }
+    //   ]
     // },
     {
       path: '/not-found',

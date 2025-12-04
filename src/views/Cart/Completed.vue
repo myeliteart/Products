@@ -104,11 +104,11 @@
       return acc + item.price * item.quantity
     }, 0)
 
-    const shippingResult = computed(() =>{
+   const shippingResult = computed(() =>{
         if(total.value >= 300){
             return shipRate.value = 'Free Shipping'
         } else {
-            return shipRate.value = '$' + 25
+            return shipRate.value = '$' + Number(25).toFixed(2)
         }
     })
 
@@ -116,7 +116,7 @@
         if(shipRate.value !== 'Free Shipping') {
             return Number(total.toFixed(2)).toLocaleString('en-US') + 25
         } else {
-            return total
+            return Number(total.toFixed(2)).toLocaleString('en-US')
         }
     })
 </script>

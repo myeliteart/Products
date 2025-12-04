@@ -18,14 +18,17 @@
             <router-link to="/products">Products</router-link>
         </li>
         <li class="">
-            <router-link to="/favorites">
-              Favorites &nbsp; <span class="font-bold">{{ listCount }}</span>
+            <router-link to="/wishlist">
+              Wishlist &nbsp; <span class="font-bold">{{ listCount }}</span>
             </router-link>
         </li>
     </ul>
       <div>
-          <input class="mr-2 outline-0 border border-gray-400 px-3 py-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
-      </div>
+          <input list="mySuggestions" class="mr-2 outline-0 border border-gray-400 px-3 py-1 rounded" type="search" v-model="searchedText" placeholder="Search Products...">
+          <!-- <datalist id="mySuggestions">
+            <option v-for="item in store.albumTitle" :key="item" :value="item"></option>
+          </datalist> -->
+        </div>
       <ul class="my-2 lg:my-0">
         <li class="mr-0">
             <router-link to="/shopping-cart">
@@ -33,6 +36,13 @@
             </router-link>
         </li>
       </ul>
+      <!-- <ul>
+        <li class="mr-0">
+            <router-link to="/dashboard/">
+              <font-awesome-icon :icon="['fas', 'user']" />
+            </router-link>
+        </li>
+    </ul> -->
     </div>
 </nav>
 
@@ -75,15 +85,22 @@
             </router-link>
         </li>
         <div>
-          <input class="w-full outline-0 border border-gray-400 px-3 py-0 mt-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
+          <input class="w-full outline-0 border px-3 py-0 mt-1 rounded" type="search" v-model="searchedText" placeholder="Search Albums...">
         </div>
+         <!-- <li @click="store.navOpen = false">
+            <router-link to="/dashboard" @click="userStore.auth = true">
+              <font-awesome-icon :icon="['fas', 'user']" />
+            </router-link>
+        </li> -->
    </ul>
+   
   </nav>
 </template>
 
 <script setup>
-    import { onMounted } from 'vue'
-    const logo = new URL('@/assets/img/logo.png', import.meta.url).href
+    // const logo = new URL('@/assets/img/logo.png', import.meta.url).href
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
 
     import { useMusicStore } from '@/stores/music';
     const store = useMusicStore();
@@ -92,10 +109,8 @@
     const { listCount, searchedText, CartCount } = storeToRefs(store);
 
     import { useUserStore } from '@/stores/user';
-import router from '@/router';
     const userStore = useUserStore();
 
-    console.log(userStore.profileValues)
     // const changeLinkDesc = () => {
     //   if(userStore.auth == true) {
     //     userStore.auth = false
@@ -105,16 +120,16 @@ import router from '@/router';
   //   albums.value.filter(item => item.title.toLowerCase().includes(searchedText.value.toLocaleLowerCase()))
   // }
 
-  function logoutt() {
-    userStore.auth = false
-    userStore.profileValues = {
-      firstName: '',
-      lastName: '',
-      email: ''
-    }
-    userStore.role = 'user';
-    router.push('/')
-  }
+  // function logoutt() {
+  //   userStore.auth = false
+  //   userStore.profileValues = {
+  //     firstName: '',
+  //     lastName: '',
+  //     email: ''
+  //   }
+  //   userStore.role = 'user';
+  //   router.push('/')
+  // }
 
 // function closeNavbar() {
 //  const collapseElement = document.getElementById('navbarNav')

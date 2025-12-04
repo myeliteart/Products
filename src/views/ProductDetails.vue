@@ -12,7 +12,7 @@
         <div class="mt-2 mb-1 relative flex-1">
             <span class="absolute right-2 top-2 s p-2 crsr" @click="bigImage = true"><font-awesome-icon :icon="['fas', 'magnifying-glass-plus']" /></span>
             <div v-for="img in currentAlbumItem.images.slice(0, 1)">
-              <img :src="img" class="bg-white border border-gray-400 hover:border-gray-700 rounded" :alt-="currentAlbumItem.title">
+              <img :src="img" class="bg-white border rounded border-gray-400 hover:border-gray-600" :alt-="currentAlbumItem.title">
             </div>
           </div>
         <div class="my-1 flex-1">
@@ -22,7 +22,7 @@
             <audio controls :src="currentAlbumItem.audio" v-if="currentAlbumItem.audio" class="my-2"></audio> <br>
             <div class="flex gap-8 mt-1">
                 <base-button mode="round" @click="store.addToCart(currentAlbumItem)" class="crsr">Add to Cart</base-button>
-                <button mode="round-reverse" @click="MyList" :class="favorites.find(item => item.id == currentAlbumItem.id) ? '' : 'cursor-pointer hover:text-orange-400'">{{ favorites.find(item => item.id == currentAlbumItem.id) ? 'Favorite Added' : 'Add to Favorites' }}</button>
+                <button mode="round-reverse" @click="MyList" :class="favorites.find(item => item.id == currentAlbumItem.id) ? '' : 'cursor-pointer hover:text-orange-400'">{{ favorites.find(item => item.id == currentAlbumItem.id) ? 'Item added to wishlist' : 'Add to Wishlist' }}</button>
             </div>
 
             <div class="mt-18 mb-4 flex cursor-pointer gap-12">
@@ -37,12 +37,12 @@
         <hr class="my-1 text-gray-400">
      </div>
      <div class="mt-0 mb-6 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-6">
-            <div v-for="item in sameArtistItems.slice(0, 5)" :key="item.id" class="zoom border rounded bg-white border-gray-400 hover:border-gray-700">
+            <div v-for="item in sameArtistItems.slice(0, 5)" :key="item.id" class="zoom border rounded bg-white border-gray-400 hover:border-gray-600">
 
             <base-card>
                 <template v-slot:top>
                     <div class="relative">
-                        <img :src="item.thumbnail" @click="relatedMusicDetail(item)" class="crsr border-b border-b-gray-300" :alt="item.title">
+                        <img :src="item.thumbnail" @click="relatedMusicDetail(item)" class="crsr border-b border-b-gray-400" :alt="item.title">
                     </div>
                 </template>
                 <template v-slot:bottom>
