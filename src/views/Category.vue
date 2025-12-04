@@ -14,11 +14,11 @@
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-6">
-        <div class="mb-4 zoom border rounded bg-white border-gray-400 hover:border-gray-700"  v-for="album in artists" :key="album.id">
+        <div class="mb-4 zoom border rounded bg-white border-gray-400 hover:border-gray-600"  v-for="album in artists" :key="album.id">
             <base-card>
               <template v-slot:top>
                 <div class="relative">
-                    <img :src="album.thumbnail" @click="toMusicDetail(album)"  class="border-b border-b-gray-300 crsr" :alt="album.title">
+                    <img :src="album.thumbnail" @click="toMusicDetail(album)"  class="border-b border-b-gray-400 crsr" :alt="album.title">
                 </div>
               </template>
               <template v-slot:bottom>

@@ -16,11 +16,11 @@
           </div>
 
           <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-6">
-          <div v-for="fav in Filteredfav" :key="fav.id" class="zoom border rounded bg-white border-gray-400 hover:border-gray-700">
+          <div v-for="fav in Filteredfav" :key="fav.id" class="zoom border rounded bg-white border-gray-400 hover:border-gray-600">
             <base-card>
               <template v-slot:top>
                 <div class="relative">
-                    <img :src="fav.thumbnail" @click="toMusicDetail(fav)"class="crsr border-b border-b-gray-300" :alt="fav.title">
+                    <img :src="fav.thumbnail" @click="toMusicDetail(fav)"class="crsr border-b border-b-gray-400" :alt="fav.title">
                 </div>
               </template>
               <template v-slot:bottom>
