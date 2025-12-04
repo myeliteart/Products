@@ -1,7 +1,7 @@
 <template>
      <div class="mx-auto">
         <the-nav></the-nav>       
-        <router-view :key="$route.fullPath"/>
+        <router-view />
         </div>
       <the-footer></the-footer> 
 </template>

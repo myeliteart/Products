@@ -1,49 +1,35 @@
 <template>
-    <div class="container py-5" v-if="store.auth">
-        <div class="row gx-3 px-sm-0 px-2">
-            <div class="col-lg-2 pb-sm-0 pb-3">
-                <nav class="navbar navbar-dark pt-0">
-                    <ul class="nav flex-column lh">
-                        <li v-for="tab in visibleTabs" :key="tab" class="d-flex align-items-center crsr pb-3" @click="hashes(tab)">
-                            <font-awesome-icon :icon="['fas', tab.icon]" class="nice"/>
-                            <div :class="selectedTab == tab ? 'orng' : ''" class="ps-3">{{ tab.name }}</div>
+    <div class="mx-auto px-6 md:px-24">
+        <div class="flex flex-col lg:flex-row my-8">
+            <div class="pb-3 flex-1">
+                <nav class="pt-0">
+                    <ul class="flex flex-col text-gray-700">
+                        <li v-for="tab in tabs" :key="tab">
+                            <router-link :to="`/dashboard/${tab.route}`">
+                                <div class="leading-10 flex items-center gap-3 crsr">
+                                    <font-awesome-icon :icon="['fas', tab.icon]"/>
+                                    <div :class="selectedTab == tab ? 'orng' : ''">{{ tab.name }}</div>
+                                </div>
+                            </router-link>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-10">
-                <section class="border border-secondary px-4 py-4" v-if="role == 'user'" style="height: auto" id="profile">
-                    <profile></profile>
-                </section>
-                <section class="border border-secondary px-4 py-4 mb-3" v-if="role == 'admin'" style="height: auto" id="add-album">
-                    <add-album></add-album>
-                </section>
-                <section class="border border-secondary px-4 py-4 my-3" v-if="Musicstore.fieldsToEdit && role == 'admin'" style="height: auto" id="edit-album">
-                    <edit-album></edit-album>
-                </section>
-                <section class="border border-secondary px-4 py-4 my-3" v-if="Musicstore.albums.length && role == 'admin'" style="height: auto" id="albums">
-                    <albums></albums>
-                </section>
-                <section class="border border-secondary px-4 py-4 my-3" v-if="Musicstore.ordered.length" style="height: auto" id="my-orders">
-                    <my-orders></my-orders>
+            <div class="flex-5">
+                <section class="border border-gray-400 rounded p-4 md:p-8 my-2">
+                    <router-view></router-view>
                 </section>
             </div>  
         </div>
     </div>
 
-    <div class="position">
-      <font-awesome-icon :icon="['fas', 'angle-up']" class="absoluteTop crsr rounded" v-if="top" @click="backToTop" />
+    <div class="relative">
+      <font-awesome-icon :icon="['fas', 'angle-up']" class="absoluteTop crsr rounded orng" v-if="top" @click="backToTop" />
     </div>
 </template>
 
 <script setup>
-    import { computed } from 'vue';
-
-    import Profile from '@/components/Dashboard/Profile.vue';
-    import AddAlbum from '@/components/Dashboard/AddAlbum.vue';
-    import EditAlbum from '@/components/Dashboard/EditAlbum.vue';
-    import Albums from '@/components/Dashboard/Albums.vue';
-    import MyOrders from '@/components/Dashboard/MyOrders.vue';
+    // const selectedComp = ref ('product-list')
 
     import { useRouter } from 'vue-router';
     const router = useRouter();
@@ -52,18 +38,18 @@
     const { top, backToTop } = useToTop()
 
     import { useMusicStore } from '@/stores/music';
-    const Musicstore = useMusicStore();
+    const store = useMusicStore();
 
     import { useUserStore } from '@/stores/user';
-    const store = useUserStore();
+    const userStore = useUserStore();
 
     import { storeToRefs } from 'pinia';
-    const { tabs, selectedTab, role } = storeToRefs(store);
+    const { tabs, selectedTab } = storeToRefs(userStore);
 
-    const hashes = (tab) => {
-        router.push({ name: 'Dashboard', hash: `#${tab.name.toLowerCase().split(' ').join('-')}`})
-        selectedTab.value = tab
-    }
+    // const hashes = (tab) => {
+    //     router.push({ name: 'Dashboard', hash: `#${tab.name.toLowerCase().split(' ').join('-')}`})
+    //     selectedTab.value = tab
+    // }
     
     // window.addEventListener("scroll", () => {
     //     tabs.value.forEach(tab => {
@@ -72,26 +58,15 @@
     //     })
     // })
 
-    const visibleTabs = computed(() => {
-        return tabs.value.filter(tab => {
-            if(tab.icon === 'user') {
-                 return role.value == 'user';
-            }
-            if(tab.icon === 'paperclip') {
-                 return role.value == 'admin';
-            }
-            if (tab.icon === 'basket-shopping') {
-                return Musicstore.ordered.length > 0;
-            }
-            if(tab.icon === 'pen') {
-                return Musicstore.fieldsToEdit && role.value == 'admin';
-            }
-            if(tab.icon === 'image') {
-                return Musicstore.albums.length > 0 && role.value == 'admin';
-            }
-            return true;
-        })
-    })
+    // const visibleTabs = computed(() => {
+    //     return tabs.value.filter(tab => {
+    //         if (tab.icon === 'basket-shopping') {
+    //             return store.ordered.length > 0;
+    //         }
+    //         return true;
+    //     })
+    // })
+
     // watch(tabs.value, () => {
     //     if(!Musicstore.ordered.length) {
     //         tabs.value.filter(tab => tab.icon == 'basket-shopping')
@@ -107,9 +82,6 @@ nav {
     position: sticky;
     top: 0px;
 }
- .position{
-      position: relative;
-    }
     .absoluteTop{
       position: fixed;
       background-color: #131313;
@@ -123,13 +95,5 @@ nav {
     
     .orng {
       color: #F89829;
-    }
-    svg {
-      font-size: 18px;
-      color: #F89829;
-    }
-    .nice {
-        font-size: 16px;
-        color: #989696;
     }
 </style>

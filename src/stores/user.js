@@ -1,45 +1,41 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { useLocalStorage } from '@vueuse/core'
+// import { useLocalStorage } from '@vueuse/core'
 
 export const useUserStore = defineStore('user', () => {
-  const auth = useLocalStorage('auth', false);
+
+  const fieldsToEdit = ref(false);
 
   const tabs = ref( 
     [
       {
-        name: 'Profile',
-        icon: 'user'
+        name: 'Product List',
+        icon: 'list',
+        route: 'product-list'
       },
+      // {
+      //   name: 'New Product',
+      //   icon: 'plus',
+      //   route: 'new-product'
+      // },
       {
-        name: 'Add Album',
-        icon: 'paperclip'
-      },
-      {
-        name: 'Edit Album',
-        icon: 'pen'
-      },
-      {
-        name: 'Albums',
-        icon: 'image'
-      },
-      {
-        name: 'My Orders',
-        icon: 'basket-shopping'
+        name: 'Order History',
+        icon: 'history',
+        route: 'order-history'
       }
     ])
   const selectedTab = ref('')
   
-  const profileValues = useLocalStorage('profile', {
-      firstName: '',
-      lastName: '',
-      email: ''
-  }
-  );
+  // const profileValues = useLocalStorage('profile', {
+  //     firstName: '',
+  //     lastName: '',
+  //     email: ''
+  // }
+  // );
 
   const toggle = ref(false);
 
-  const role = useLocalStorage('role', 'user');
+  // const role = useLocalStorage('role', 'user');
 
-  return { auth, tabs, selectedTab, toggle, profileValues, role }
+  return { tabs, selectedTab, toggle, fieldsToEdit }
 })
