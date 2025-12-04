@@ -12,7 +12,7 @@
             <base-button mode="reverse" class="mt-4 crsr" @click="router.push('/products')">Add items to wishlist</base-button>
         </div>
           <div class="">
-            <h1 class="pb-4 pt-1 text-4xl font-medium" v-if="Filteredfav.length">Favorite items</h1>
+            <h1 class="pb-4 pt-1 text-4xl font-medium" v-if="Filteredfav.length">Wishlist</h1>
           </div>
 
           <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-6">
