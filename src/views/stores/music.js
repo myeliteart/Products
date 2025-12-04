@@ -582,6 +582,15 @@ export const useMusicStore = defineStore('music', () => {
     }
   }
 
+    // const deleteProduct  = async (id) => {
+    //      try {
+    //         await axios.delete(`https://dummyjson.com/products/${id}`)
+    //       } catch (err){
+    //         console.log("Error delete failed:", err)
+    //       }
+    //     products.value = products.value.filter(itm => itm.id !== id)
+    // }
+
   const shipRate = ref('');
   const checks = ref ([])
   const selectedDetailId = ref(null)
@@ -592,7 +601,7 @@ export const useMusicStore = defineStore('music', () => {
 
   
   const NewAlbumError = ref(false)
-  const sorted = ref(['A to Z', 'Price: High to Low', 'Price: Low to High'])
+  const sorted = ref(['Brand: A to Z', 'Price: High to Low', 'Price: Low to High'])
   const sortedSelected = ref('')
 
   const albumTitle = ref (['beauty', 'fragrances', 'furniture', 'groceries', 'home-decoration', 'kitchen-accessories', 'laptops', 'mens-shirts', 'mens-watches', 'mobile-accessories', 'motorcycle', 'skin-care', 'smartphones', 'sports-accessories', 'sunglasses', 'tablets', 'tops', 'vehicle', 'womens-bags', 'womens-dresses', 'womens-jewellery', 'womens-shoes', 'womens-watches']);
@@ -604,7 +613,7 @@ export const useMusicStore = defineStore('music', () => {
   
   const filteredMusic = computed(() => {
     return products.value.sort((a, b) => {
-        if(sortedSelected.value == 'A to Z'){
+        if(sortedSelected.value == 'Brand: A to Z'){
           return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
         }
         if(sortedSelected.value == 'Price: High to Low'){
@@ -635,7 +644,6 @@ export const useMusicStore = defineStore('music', () => {
         }, 0);
       }
 
-
   const addToCart = (item) => {
       const here = cart.value.find(crt => crt.id == item.id)
       if(here) {
@@ -649,26 +657,13 @@ export const useMusicStore = defineStore('music', () => {
         const newItem = {...item, quantity: 1}
         cart.value.unshift(newItem)
         CartCount.value++
-        calculateTotal()
+        calculateTotal() 
         cartModal.value = newItem
-      }  
+      }
       // setTimeout(function(){
       //   itemAdded.value = false
       // }, 6000);
     }
-  
-  // const allArtists = computed(() => {
-  //   const names = ref(products.value.filter((itm) => itm.category.includes(selectedFilterCat.value || selectedFilterCat.value == '')).map(item => item.category))
-  //   return [...new Set(names.value)]; 
-  //   })
-   
-  // const artistCounts = computed(() => {
-  //   // const counts = {};
-  //   products.value.filter(itm => itm.category.includes(selectedFilterCat.value))
-  //     // counts[prod.category] = (counts[prod.category] || 0) + 1;
-  //   // return counts;
-  // });
-
 
   const slicedProducts = computed(() => {
     return products.value.slice(25, 34).filter(item => item.title.toLowerCase().includes(searchedText.value.toLocaleLowerCase()))
@@ -695,10 +690,9 @@ const ordered = ref([])
 
 const itemDetailsforReviews = ref (null)
 
-const fieldsToEdit = ref(false);
 let editText = ref(null)
 
-let selectedAlbum = ref ([]);
+// let selectedAlbum = ref ([]);
 
-  return { minPrice, maxPrice, fetchProducts, products, addToCart, calculateTotal, total, navOpen, selectedAlbumToDelete, view, NewAlbumError, albumTitle, cartModal, selectedFilterCat, selectedAlbum, editText, fieldsToEdit, rate, rating, slicedProducts, itemDetailsforReviews, ordered, favSolid, favRegular, shipRate, bigImage, card, shipDetails, shipping, billing, sorted, sortedSelected, completed, selectedFav, itemAdded, checks, listCount, selectedDetailId, CartCount, favorites, options, searchedText, filteredMusic, cart }
+  return { minPrice, maxPrice, fetchProducts, products, addToCart, calculateTotal, total, navOpen, selectedAlbumToDelete, view, NewAlbumError, albumTitle, cartModal, selectedFilterCat, editText, rate, rating, slicedProducts, itemDetailsforReviews, ordered, favSolid, favRegular, shipRate, bigImage, card, shipDetails, shipping, billing, sorted, sortedSelected, completed, selectedFav, itemAdded, checks, listCount, selectedDetailId, CartCount, favorites, options, searchedText, filteredMusic, cart }
 })
